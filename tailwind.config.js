@@ -18,6 +18,7 @@ module.exports = {
         },
         vercel: {
           pink: "#FF0080",
+          blue: "#0070F3",
         },
       },
     },

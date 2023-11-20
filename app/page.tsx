@@ -1,6 +1,5 @@
 import Header from "@/components/header";
 import LatestProducts from "@/components/latest-products";
-import ProductCard from "@/components/product-card";
 
 export default function Home() {
   return (
@@ -9,12 +8,6 @@ export default function Home() {
         <Header />
         <div className="mt-10">
           <LatestProducts />
-        </div>
-        <div className="mt-10 grid grid-cols-4 gap-6">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
         </div>
       </section>
     </main>
