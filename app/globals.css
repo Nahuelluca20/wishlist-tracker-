@@ -21,6 +21,10 @@ body {
     -1.3px -1.3px;
 }
 
+input[type="search" i] {
+  writing-mode: horizontal-tb !important;
+}
+
 /* #4D4D53 */
 
 /* #27272A */
