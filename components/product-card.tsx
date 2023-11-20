@@ -1,5 +1,6 @@
 import Image from "next/image";
 import {HeartIcon as HeartIconSolid} from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 export default function ProductCard() {
   const hearts = 4;
@@ -28,9 +29,18 @@ export default function ProductCard() {
           ),
         )}
       </div>
-      <div className="flex items-center gap-1">
-        <div className="text-sm leading-snug text-white">$</div>
-        <div className="text-lg font-bold leading-snug text-white">46</div>
+      <div className="flex items-center justify-between gap-1">
+        <div className="text-sm leading-snug flex items-center text-white">
+          $ <span className="text-lg font-bold">46</span>
+        </div>
+        <Link
+          className=" items-center space-x-2 rounded-lg bg-vercel-blue px-3 py-1  text-sm font-medium text-white hover:bg-vercel-blue/90 disabled:text-white/70
+
+        "
+          href={"/"}
+        >
+          View
+        </Link>
       </div>
     </div>
   );
