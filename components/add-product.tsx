@@ -13,7 +13,7 @@ export default function AddProduct({
     <div
       aria-hidden="true"
       className={clsx(
-        "transition-all overflow-hidden z-50 flex fixed  bg-[hsl(0,0%,0%,0.8)] justify-center items-center w-full md:inset-0 h-screen max-h-full",
+        "overflow-hidden z-50 top-0 left-0 flex fixed bg-[hsl(0,0%,0%,0.8)] justify-center items-center w-full h-screen max-h-full",
         {
           block: isOpen,
           hidden: !isOpen,
@@ -22,7 +22,7 @@ export default function AddProduct({
       data-modal-backdrop="static"
       id="static-modal"
     >
-      <div className={"relative p-4 w-full max-w-2xl max-h-full"}>
+      <div className="relative p-4 w-full max-w-2xl max-h-full">
         <div className="relative bg-black border-nextGray-200 border-2 rounded-lg shadow dark:bg-gray-700">
           <div
             className="flex items-center justify-between p-4 md:p-5 border-b
