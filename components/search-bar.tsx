@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function SearchBar() {
   return (
     <nav className="w-full flex rounded-lg bg-nextGray-300 px-5 py-4 items-center">
-      <div className="flex items-center gap-0">
+      <div className="flex items-center gap-4">
         <Image
           alt="logo"
           className="bg-white rounded-full border w-10 h-10"
@@ -30,7 +30,7 @@ export default function SearchBar() {
           <input
             aria-label="Search"
             autoComplete="off"
-            className="block w-full rounded-full border-none bg-gray-600 pl-10 font-medium text-gray-200 focus:border-vercel-pink focus:ring-2 focus:ring-vercel-pink"
+            className="h-10 block w-full rounded-full border-none bg-gray-600 pl-10 font-medium text-gray-200 focus:border-vercel-pink focus:ring-2 focus:ring-vercel-pink"
             id="search"
             name="search"
             type="search"

@@ -21,12 +21,20 @@ body {
     -1.3px -1.3px;
 }
 
-input[type="search" i] {
-  writing-mode: horizontal-tb !important;
+#search::-webkit-search-cancel-button {
+  content: URL(/assets/close.svg);
+  position: relative;
+  background: url(/assets/close.svg) no-repeat 50% 50%;
+
+  background: #fff;
+  color: #222;
+  right: 10px;
 }
+
 
 /* #4D4D53 */
 
 /* #27272A */
 
 /* #52525B */
+
