@@ -3,8 +3,7 @@ import {HeartIcon as HeartIconSolid} from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 export default function ProductCard() {
-  const hearts = 4;
-  const maxHearts = 5;
+  const hearts = 2;
 
   return (
     <div className="col-span-2 md:col-span-1 space-y-2">
@@ -21,7 +20,7 @@ export default function ProductCard() {
         Fusce commodo porta posuere{" "}
       </h5>
       <div className="flex space-x-1">
-        {Array.from({length: maxHearts}, (_, index) =>
+        {Array.from({length: 5}, (_, index) =>
           index < hearts ? (
             <HeartIconSolid key={index} className="w-3.5 h-3.5 text-white" />
           ) : (
@@ -34,9 +33,7 @@ export default function ProductCard() {
           $ <span className="text-lg font-bold">46</span>
         </div>
         <Link
-          className=" items-center space-x-2 rounded-lg bg-vercel-blue px-3 py-1  text-sm font-medium text-white hover:bg-vercel-blue/90 disabled:text-white/70
-
-        "
+          className=" items-center space-x-2 rounded-lg bg-vercel-blue px-3 py-1  text-sm font-medium text-white hover:bg-vercel-blue/90 disabled:text-white/70"
           href={"/"}
         >
           View
