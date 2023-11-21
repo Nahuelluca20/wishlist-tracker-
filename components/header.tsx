@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <>
       <AddProduct isOpen={isOpen} setIsOpen={setIsOpen} />
-      <nav className="w-full justify-between flex rounded-lg bg-nextGray-300 px-5 py-4 items-center">
+      <nav className="w-full gap-2 flex-wrap gap-y-5 justify-center sm:justify-between flex rounded-lg bg-nextGray-300 px-5 py-4 items-center">
         <div className="flex items-center gap-4">
           <Image
             alt="logo"

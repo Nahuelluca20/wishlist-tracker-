@@ -23,7 +23,7 @@ export default function AddProduct({
       id="static-modal"
     >
       <div className="relative p-4 w-full max-w-2xl max-h-full">
-        <div className="relative bg-black border-nextGray-200 border-2 rounded-lg shadow dark:bg-gray-700">
+        <div className="relative bg-nextGray-500 border-nextGray-200 border-2 rounded-lg shadow dark:bg-gray-700">
           <div
             className="flex items-center justify-between p-4 md:p-5 border-b
           border-nextGray-200 rounded-t nextGray-200"
