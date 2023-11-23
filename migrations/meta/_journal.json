@@ -8,6 +8,27 @@
       "when": 1700564498262,
       "tag": "0000_nappy_power_pack",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1700692822790,
+      "tag": "0001_small_proudstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1700739448368,
+      "tag": "0002_dapper_jack_murdock",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1700739712977,
+      "tag": "0003_greedy_klaw",
+      "breakpoints": true
     }
   ]
 }
