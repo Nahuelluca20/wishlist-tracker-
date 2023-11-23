@@ -5,8 +5,6 @@ import ProductCard from "./product-card";
 export default async function LatestProducts() {
   const products = await getProducts();
 
-  console.log(products?.data);
-
   if (!products) return;
 
   return (
