@@ -7,14 +7,12 @@ export default function ProductCard({
   title,
   hearts,
   imageUrl,
-  productLink,
   price,
 }: {
   id: string;
   title: string;
   hearts: number;
   imageUrl: string | null;
-  productLink: string;
   price: number;
 }) {
   return (
@@ -48,7 +46,7 @@ export default function ProductCard({
         </div>
         <Link
           className=" items-center space-x-2 rounded-lg bg-vercel-blue px-3 py-1  text-sm font-medium text-white hover:bg-vercel-blue/90 disabled:text-white/70"
-          href={"/"}
+          href={`/products/${id}`}
         >
           View
         </Link>

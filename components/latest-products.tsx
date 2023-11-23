@@ -24,7 +24,6 @@ export default async function LatestProducts() {
               id={product.id}
               imageUrl={product.imageUrl}
               price={product.price ?? 0}
-              productLink={product.productLink}
               title={product.title}
             />
           ))}
