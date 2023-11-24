@@ -7,23 +7,29 @@ import {getProductsById} from "@/lib/supabase/queries";
 
 export default async function page({params}: {params: {id: string}}) {
   const product = await getProductsById(params.id);
-  const hearts = product?.data?.hearts;
+
+  // : {data: Product} | {data: null; error: string} | undefined
+  if (!product?.data) {
+    return <div>Product not found</div>;
+  }
+
+  const {hearts, imageUrl, title, price, productLink} = product?.data;
 
   return (
     <LayoutContainer>
-      <div className="flex justify-between">
-        {product?.data && (
+      <div className="sm:flex gap-5 justify-center">
+        {imageUrl && (
           <Image
             alt="product"
             className="rounded-xl grayscale group-hover:opacity-80"
             height={300}
-            src={product?.data.imageUrl ?? ""}
+            src={imageUrl ?? ""}
             width={300}
           />
         )}
-        <div>
+        <div className="max-w-[300px] space-y-2">
           <h5 className="truncate text-sm font-medium text-white group-hover:text-vercel-cyan">
-            {product?.data?.title}{" "}
+            {title}{" "}
           </h5>
           <div className="flex space-x-1">
             {hearts &&
@@ -35,13 +41,13 @@ export default async function page({params}: {params: {id: string}}) {
                 ),
               )}
           </div>
-          <div className="flex items-center justify-between gap-1">
+          <div className="grid space-y-5 items-center w-full justify-between gap-3">
             <div className="text-sm leading-snug flex items-center text-white">
-              $ <span className="text-lg font-bold">{product?.data?.price}</span>
+              $ <span className="text-lg font-bold">{price}</span>
             </div>
             <Link
               className=" items-center space-x-2 rounded-lg bg-vercel-blue px-3 py-1  text-sm font-medium text-white hover:bg-vercel-blue/90 disabled:text-white/70"
-              href={product?.data?.productLink ?? ""}
+              href={productLink ?? ""}
               target="_blank"
             >
               View Product

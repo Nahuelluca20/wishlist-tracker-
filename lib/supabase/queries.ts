@@ -3,6 +3,7 @@
 import {eq} from "drizzle-orm";
 
 import db from "./db";
+import {Product} from "./supabase.types";
 
 // import {validate} from "uuid";
 

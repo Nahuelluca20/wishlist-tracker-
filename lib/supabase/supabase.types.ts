@@ -1,3 +1,7 @@
+import {InferSelectModel} from "drizzle-orm";
+
+import {products} from "@/migrations/schema";
+
 export type Json = string | number | boolean | null | {[key: string]: Json | undefined} | Json[];
 
 export interface Database {
@@ -45,3 +49,5 @@ export interface Database {
     };
   };
 }
+
+export type Product = InferSelectModel<typeof products>;
