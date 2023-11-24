@@ -1,15 +1,12 @@
 "use server";
 
-import {eq} from "drizzle-orm";
-
-import db from "./db";
-import {Product} from "./supabase.types";
+import {prisma} from "@/lib/prisma";
 
 // import {validate} from "uuid";
 
 export async function getProducts() {
   try {
-    const data = await db.query.products.findMany();
+    const data = await prisma.products.findMany();
 
     if (data) return {data: data, error: null};
   } catch (error) {
@@ -21,9 +18,7 @@ export async function getProducts() {
 
 export async function getProductsById(productId: string) {
   try {
-    const data = await db.query.products.findFirst({
-      where: (s, {eq}) => eq(s.id, productId),
-    });
+    const data = await prisma.products.findById(productId);
 
     if (data) return {data: data, error: null};
   } catch (error) {
