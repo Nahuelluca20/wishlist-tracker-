@@ -4,17 +4,21 @@ import {XMarkIcon} from "@heroicons/react/24/solid";
 import {useFormState} from "react-dom";
 import {useFormStatus} from "react-dom";
 
-import {addProduct} from "@/lib/supabase/queries";
-
+import {addProduct} from "@/lib/queries";
 const initialState = {
   message: "undefined",
 };
 
-function SubmitButton() {
+function SubmitButton({onClose}: {onClose: (isOpen: boolean) => void}) {
   const {pending} = useFormStatus();
 
   return (
-    <button aria-disabled={pending} type="submit">
+    <button
+      aria-disabled={pending}
+      className="text-white bg-vercel-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+      type="submit"
+      onClick={async () => (await !pending) && onClose(false)}
+    >
       Add
     </button>
   );
@@ -60,36 +64,25 @@ export default function AddProduct({
             </button>
           </div>
           <div className="p-4 md:p-5 space-y-4">
-            {/* <p className="text-base leading-relaxed text-gray-400">
-              With less than a month to go before the European Union enacts new consumer privacy
-              laws for its citizens, companies around the world are updating their terms of service
-              agreements to comply.
-            </p>
-            <p className="text-base leading-relaxed text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on
-              May 25 and is meant to ensure a common set of data rights in the European Union. It
-              requires organizations to notify users as soon as possible of high-risk data breaches
-              that could personally affect them.
-            </p> */}
             <form action={formAction} className=" gap-2 grid">
               <div className="grid gap-2">
-                <label htmlFor="todo">Title</label>
+                <label htmlFor="title">Title</label>
                 <input required className="text-black" id="title" name="title" type="text" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="todo">Hearts</label>
+                <label htmlFor="hearts">Hearts</label>
                 <input required className="text-black" id="hearts" name="hearts" type="number" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="todo">Price</label>
-                <input required className="text-black" id="price" name="price" type="number" />
+                <label htmlFor="price">Price</label>
+                <input required className="text-black" id="price" name="price" type="text" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="todo">Image URL</label>
+                <label htmlFor="imageUrl">Image URL</label>
                 <input required className="text-black" id="imageUrl" name="imageUrl" type="text" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="todo">Product Link</label>
+                <label htmlFor="productLink">Product Link</label>
                 <input
                   required
                   className="text-black"
@@ -98,30 +91,22 @@ export default function AddProduct({
                   type="text"
                 />
               </div>
-              <SubmitButton />
-              <p aria-live="polite" className="sr-only" role="status">
-                {state?.message}
-              </p>
+              <div className="mt-5 flex items-center py-4 md:py-5 border-t border-nextGray-200 rounded-b dark:border-gray-600">
+                <SubmitButton onClose={setIsOpen} />
+                <p aria-live="polite" className="sr-only" role="status">
+                  {state?.message}
+                </p>
+                <button
+                  className="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
+                  data-modal-hide="static-modal"
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Close
+                </button>
+              </div>
             </form>
           </div>
-          <form className="flex items-center p-4 md:p-5 border-t border-nextGray-200 rounded-b dark:border-gray-600">
-            <button
-              className="text-white bg-vercel-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              data-modal-hide="static-modal"
-              type="button"
-            >
-              Add
-            </button>
-            <SubmitButton />
-            <button
-              className="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
-              data-modal-hide="static-modal"
-              type="button"
-              onClick={() => setIsOpen(false)}
-            >
-              Close
-            </button>
-          </form>
         </div>
       </div>
     </div>

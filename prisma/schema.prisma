@@ -14,7 +14,7 @@ model products {
   hearts       Int?      @default(0)
   image_url    String?
   product_link String
-  price        Float?    @default(0) @db.Real
+  price        String?
 }
 
 model users {

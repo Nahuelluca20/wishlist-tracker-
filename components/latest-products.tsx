@@ -1,4 +1,4 @@
-import {getProducts} from "@/lib/supabase/queries";
+import {getProducts} from "@/lib/queries";
 
 import ProductCard from "./product-card";
 
@@ -20,8 +20,8 @@ export default async function LatestProducts() {
               key={product.id}
               hearts={product.hearts ?? 0}
               id={product.id}
-              imageUrl={product.imageUrl}
-              price={product.price ?? 0}
+              imageUrl={product.image_url}
+              price={product.price ?? "0"}
               title={product.title}
             />
           ))}

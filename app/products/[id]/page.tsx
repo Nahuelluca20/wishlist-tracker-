@@ -4,7 +4,7 @@ import Link from "next/link";
 import {ArrowLeftCircleIcon} from "@heroicons/react/20/solid";
 
 import LayoutContainer from "@/components/layout-container";
-import {getProductsById} from "@/lib/supabase/queries";
+import {getProductsById} from "@/lib/queries";
 
 export default async function page({params}: {params: {id: string}}) {
   const product = await getProductsById(params.id);
@@ -13,7 +13,7 @@ export default async function page({params}: {params: {id: string}}) {
     return <div>Product not found</div>;
   }
 
-  const {hearts, imageUrl, title, price, productLink} = product?.data;
+  const {hearts, image_url: imageUrl, title, price, product_link: productLink} = product?.data;
 
   return (
     <LayoutContainer>

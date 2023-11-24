@@ -13,7 +13,7 @@ export default function ProductCard({
   title: string;
   hearts: number;
   imageUrl: string | null;
-  price: number;
+  price: string;
 }) {
   return (
     <div className="col-span-2 md:col-span-1 space-y-2">
