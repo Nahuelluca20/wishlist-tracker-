@@ -25,7 +25,7 @@ export default async function page({params}: {params: {id: string}}) {
           {imageUrl && (
             <Image
               alt="product"
-              className="rounded-xl grayscale group-hover:opacity-80"
+              className="rounded-xl group-hover:opacity-80"
               height={300}
               src={imageUrl ?? ""}
               width={300}

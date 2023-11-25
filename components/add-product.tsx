@@ -30,7 +30,7 @@ export default function AddProduct({
             className="flex items-center justify-between p-4 md:p-5 border-b
           border-nextGray-200 rounded-t nextGray-200"
           >
-            <h3 className="text-xl font-semibold text-white">Static modal</h3>
+            <h3 className="text-xl font-semibold text-white">Add Product</h3>
             <button
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
               data-modal-hide="static-modal"

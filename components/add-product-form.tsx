@@ -1,6 +1,8 @@
 "use client";
 import {useFormState} from "react-dom";
 import {useFormStatus} from "react-dom";
+import {useState} from "react";
+import {HeartIcon as HeartIconSolid} from "@heroicons/react/24/solid";
 
 import {addProduct} from "@/lib/queries";
 const initialState = {
@@ -24,6 +26,12 @@ function SubmitButton({onClose}: {onClose: (isOpen: boolean) => void}) {
 
 export default function AddProductForm({setIsOpen}: {setIsOpen: (isOpen: boolean) => void}) {
   const [state, formAction] = useFormState(addProduct, initialState);
+  const [hearts, setHearts] = useState<number>(0);
+
+  const handleHeartClick = (index: number) => {
+    setHearts(index + 1);
+  };
+
   const inputs = [
     {
       id: "title",
@@ -31,12 +39,12 @@ export default function AddProductForm({setIsOpen}: {setIsOpen: (isOpen: boolean
       type: "text",
       label: "Title",
     },
-    {
-      id: "hearts",
-      name: "hearts",
-      type: "number",
-      label: "Hearts",
-    },
+    // {
+    //   id: "hearts",
+    //   name: "hearts",
+    //   type: "number",
+    //   label: "Hearts",
+    // },
     {
       id: "price",
       name: "price",
@@ -64,13 +72,29 @@ export default function AddProductForm({setIsOpen}: {setIsOpen: (isOpen: boolean
           <label htmlFor="title">{input.label}</label>
           <input
             required
-            className="text-black"
+            className="border-none font-medium rounded-md bg-gray-600 py-2 px-4 border border-gray-300 text-gray-200"
             id={input.id}
             name={input.name}
             type={input.type}
           />
         </div>
       ))}
+      <input name="hearts" type="hidden" value={hearts} />
+      <div className="mt-1">
+        <label htmlFor="hearts">Hearts</label>
+        <div className="flex space-x-1">
+          {Array.from({length: 5}, (_, index) => (
+            <HeartIconSolid
+              key={index}
+              className={`w-6 h-6 cursor-pointer ${
+                index < hearts ? "text-white" : "text-nextGray-400"
+              }`}
+              onClick={() => handleHeartClick(index)}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="mt-5 flex items-center py-4 md:py-5 border-t border-nextGray-200 rounded-b dark:border-gray-600">
         <SubmitButton onClose={setIsOpen} />
         <p aria-live="polite" className="sr-only" role="status">
