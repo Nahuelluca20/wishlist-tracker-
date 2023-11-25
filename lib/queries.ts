@@ -6,6 +6,8 @@ import {redirect} from "next/navigation";
 
 import {prisma} from "@/lib/prisma";
 
+// Get products queries
+
 export async function getProducts() {
   try {
     const data = await prisma.products.findMany();
@@ -29,6 +31,8 @@ export async function getProductsById(productId: string) {
     return {data: null, error: `Error`};
   }
 }
+
+// Form queries
 
 export async function addProduct(prevState: any, formData: FormData) {
   const schema = z.object({
