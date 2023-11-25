@@ -2,6 +2,8 @@ import {getProducts} from "@/lib/queries";
 
 import ProductCard from "./product-card";
 
+// export const dynamic = "force-dynamic";
+
 export default async function LatestProducts() {
   const products = await getProducts();
 

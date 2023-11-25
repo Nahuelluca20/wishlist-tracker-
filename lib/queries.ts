@@ -1,12 +1,10 @@
 "use server";
 
 import {z} from "zod";
-import {revalidatePath} from "next/cache";
+import {revalidatePath, revalidateTag} from "next/cache";
 import {redirect} from "next/navigation";
 
 import {prisma} from "@/lib/prisma";
-
-// import {validate} from "uuid";
 
 export async function getProducts() {
   try {
@@ -88,8 +86,9 @@ export async function deleteProduct(prevState: any, formData: FormData) {
       },
     });
 
-    await redirect("/");
+    revalidateTag("/products");
   } catch (e) {
     return {message: "Failed to delete product"};
   }
+  redirect("/");
 }
