@@ -2,6 +2,7 @@
 
 import {z} from "zod";
 import {revalidatePath} from "next/cache";
+import {redirect} from "next/navigation";
 
 import {prisma} from "@/lib/prisma";
 
@@ -13,8 +14,6 @@ export async function getProducts() {
 
     if (data) return {data: data, error: null};
   } catch (error) {
-    console.log("🔴 error:", error);
-
     return {data: null, error: `Error`};
   }
 }
@@ -29,8 +28,6 @@ export async function getProductsById(productId: string) {
 
     if (data) return {data: data, error: null};
   } catch (error) {
-    console.log("🔴 error:", error);
-
     return {data: null, error: `Error`};
   }
 }
@@ -52,7 +49,6 @@ export async function addProduct(prevState: any, formData: FormData) {
     productLink: formData.get("productLink"),
   });
 
-  console.log(parse);
   if (!parse.success) {
     return {message: "Failed to create product"};
   }
@@ -69,11 +65,31 @@ export async function addProduct(prevState: any, formData: FormData) {
         product_link: productData.productLink,
       },
     });
-
     revalidatePath("/");
 
     return {message: `Added todo ${productData.title}`};
   } catch (e) {
     return {message: "Failed to create todo"};
+  }
+}
+
+export async function deleteProduct(prevState: any, formData: FormData) {
+  const schema = z.object({
+    id: z.string().min(1),
+  });
+  const data = schema.parse({
+    id: formData.get("id"),
+  });
+
+  try {
+    await prisma.products.delete({
+      where: {
+        id: data.id,
+      },
+    });
+
+    await redirect("/");
+  } catch (e) {
+    return {message: "Failed to delete product"};
   }
 }
