@@ -2,13 +2,28 @@
 
 import Image from "next/image";
 import {MagnifyingGlassIcon} from "@heroicons/react/24/solid";
-import {useState} from "react";
+import {useCallback, useState} from "react";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 
 import AddProductButton from "./add-product-button";
 import AddProduct from "./add-product";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams);
+
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams],
+  );
 
   return (
     <>
@@ -33,6 +48,9 @@ export default function Header() {
               id="search"
               name="search"
               type="search"
+              onChange={(e) => {
+                router.push(pathname + "?" + createQueryString("name", e.target.value));
+              }}
             />
           </div>
         </div>

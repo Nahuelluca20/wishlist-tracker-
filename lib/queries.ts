@@ -18,6 +18,23 @@ export async function getProducts() {
   }
 }
 
+export async function getProductsByName(name: string) {
+  try {
+    const data = await prisma.products.findMany({
+      where: {
+        title: {
+          contains: name,
+          mode: "insensitive",
+        },
+      },
+    });
+
+    if (data) return {data: data, error: null};
+  } catch (error) {
+    return {data: null, error: `Error`};
+  }
+}
+
 export async function getProductsById(productId: string) {
   try {
     const data = await prisma.products.findUnique({

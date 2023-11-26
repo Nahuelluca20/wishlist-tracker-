@@ -81,7 +81,7 @@ export default function AddProductForm({setIsOpen}: {setIsOpen: (isOpen: boolean
       ))}
       <input name="hearts" type="hidden" value={hearts} />
       <div className="mt-1">
-        <label htmlFor="hearts">Hearts</label>
+        <label htmlFor="hearts">How much do you like this product</label>
         <div className="flex space-x-1">
           {Array.from({length: 5}, (_, index) => (
             <HeartIconSolid

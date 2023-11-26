@@ -32,13 +32,14 @@ export default function ProductCard({
         {title}{" "}
       </h5>
       <div className="flex space-x-1">
-        {Array.from({length: 5}, (_, index) =>
-          index < hearts ? (
-            <HeartIconSolid key={index} className="w-3.5 h-3.5 text-white" />
-          ) : (
-            <HeartIconSolid key={index + hearts} className="w-3.5 h-3.5 text-nextGray-400" />
-          ),
-        )}
+        {Array.from({length: 5}, (_, index) => (
+          <HeartIconSolid
+            key={index}
+            className={`w-4 h-4 cursor-pointer ${
+              index < hearts ? "text-white" : "text-nextGray-400"
+            }`}
+          />
+        ))}
       </div>
       <div className="flex items-center justify-between gap-1">
         <div className="text-sm leading-snug flex items-center text-white">
