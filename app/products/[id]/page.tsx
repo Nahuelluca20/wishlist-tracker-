@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {ArrowLeftCircleIcon} from "@heroicons/react/20/solid";
+import {Suspense} from "react";
 
 import LayoutContainer from "@/components/layout-container";
 import {getProductsById} from "@/lib/queries";
 import {DeleteForm} from "@/components/delete-form";
 import HeartsCount from "@/components/hearts-count";
+import {ImageSkeleton} from "@/components/products-skeleton";
 
 export default async function page({params}: {params: {id: string}}) {
   const product = await getProductsById(params.id);
@@ -24,14 +26,16 @@ export default async function page({params}: {params: {id: string}}) {
         </Link>
         <div className="sm:flex gap-5 justify-center">
           <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px]">
-            {imageUrl && (
-              <Image
-                alt="product"
-                className=" rounded-xl group-hover:opacity-80"
-                fill={true}
-                src={imageUrl ?? ""}
-              />
-            )}
+            <Suspense fallback={<ImageSkeleton />}>
+              {imageUrl && (
+                <Image
+                  alt="product"
+                  className=" rounded-xl group-hover:opacity-80"
+                  fill={true}
+                  src={imageUrl ?? ""}
+                />
+              )}
+            </Suspense>
           </div>
           <div className="max-w-[250px] mt-2 sm:mt-0 sm:max-w-[300px] space-y-2">
             <h5 className="text-sm font-medium text-white group-hover:text-vercel-cyan">

@@ -29,3 +29,7 @@ export function ProductsSkeleton() {
     </div>
   );
 }
+
+export function ImageSkeleton() {
+  return <div className="rounded-lg bg-gray-900 ${shimmer} w-full h-full" />;
+}
