@@ -1,5 +1,4 @@
 import Image from "next/image";
-import {HeartIcon as HeartIconSolid} from "@heroicons/react/24/solid";
 import Link from "next/link";
 import {ArrowLeftCircleIcon} from "@heroicons/react/20/solid";
 

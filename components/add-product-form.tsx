@@ -2,9 +2,10 @@
 import {useFormState} from "react-dom";
 import {useFormStatus} from "react-dom";
 import {useState} from "react";
-import {HeartIcon as HeartIconSolid} from "@heroicons/react/24/solid";
 
 import {addProduct} from "@/lib/queries";
+
+import HeartsCount from "./hearts-count";
 const initialState = {
   message: "undefined",
 };
@@ -39,12 +40,6 @@ export default function AddProductForm({setIsOpen}: {setIsOpen: (isOpen: boolean
       type: "text",
       label: "Title",
     },
-    // {
-    //   id: "hearts",
-    //   name: "hearts",
-    //   type: "number",
-    //   label: "Hearts",
-    // },
     {
       id: "price",
       name: "price",
@@ -83,15 +78,7 @@ export default function AddProductForm({setIsOpen}: {setIsOpen: (isOpen: boolean
       <div className="mt-1">
         <label htmlFor="hearts">How much do you like this product</label>
         <div className="flex space-x-1">
-          {Array.from({length: 5}, (_, index) => (
-            <HeartIconSolid
-              key={index}
-              className={`w-6 h-6 cursor-pointer ${
-                index < hearts ? "text-white" : "text-nextGray-400"
-              }`}
-              onClick={() => handleHeartClick(index)}
-            />
-          ))}
+          <HeartsCount handleClick={handleHeartClick} hearts={hearts} size="6" />
         </div>
       </div>
 
