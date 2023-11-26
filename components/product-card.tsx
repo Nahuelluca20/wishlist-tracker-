@@ -2,6 +2,8 @@ import Image from "next/image";
 import {HeartIcon as HeartIconSolid} from "@heroicons/react/24/solid";
 import Link from "next/link";
 
+import HeartsCount from "./hearts-count";
+
 export default function ProductCard({
   id,
   title,
@@ -32,14 +34,7 @@ export default function ProductCard({
         {title}{" "}
       </h5>
       <div className="flex space-x-1">
-        {Array.from({length: 5}, (_, index) => (
-          <HeartIconSolid
-            key={index}
-            className={`w-4 h-4 cursor-pointer ${
-              index < hearts ? "text-white" : "text-nextGray-400"
-            }`}
-          />
-        ))}
+        <HeartsCount hearts={hearts} />
       </div>
       <div className="flex items-center justify-between gap-1">
         <div className="text-sm leading-snug flex items-center text-white">
