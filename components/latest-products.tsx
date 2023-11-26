@@ -3,8 +3,10 @@ import {getProducts} from "@/lib/queries";
 import ProductCard from "./product-card";
 
 // export const dynamic = "force-dynamic";
+const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export default async function LatestProducts() {
+  await sleep(3000);
   const products = await getProducts();
 
   if (!products) return;

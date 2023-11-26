@@ -1,8 +1,11 @@
 import {getProductsByName} from "@/lib/queries";
 
 import ProductCard from "./product-card";
+const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export default async function ResultsProducts({name}: {name: string}) {
+  await sleep(3000);
+
   const products = await getProductsByName(name);
 
   if (!products) return;

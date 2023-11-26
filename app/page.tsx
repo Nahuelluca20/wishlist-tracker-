@@ -1,6 +1,9 @@
+import {Suspense} from "react";
+
 import Header from "@/components/header";
 import LatestProducts from "@/components/latest-products";
 import LayoutContainer from "@/components/layout-container";
+import {ProductsSkeleton} from "@/components/products-skeleton";
 import ResultsProducts from "@/components/results-products";
 
 export default async function Home({
@@ -13,9 +16,13 @@ export default async function Home({
       <Header />
       <div className="mt-10">
         {searchParams.name !== undefined && searchParams.name !== "" ? (
-          <ResultsProducts name={searchParams.name as string} />
+          <Suspense fallback={<ProductsSkeleton />}>
+            <ResultsProducts name={searchParams.name as string} />
+          </Suspense>
         ) : (
-          <LatestProducts />
+          <Suspense fallback={<ProductsSkeleton />}>
+            <LatestProducts />
+          </Suspense>
         )}
       </div>
     </LayoutContainer>
