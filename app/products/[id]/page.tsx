@@ -39,7 +39,7 @@ export default async function page({params}: {params: {id: string}}) {
               {title}{" "}
             </h5>
             <div className="flex space-x-1">
-              {hearts !== null && hearts >= 0 && <HeartsCount hearts={hearts} size="4" />}
+              {hearts !== null && hearts >= 0 && <HeartsCount hearts={hearts} size="5" />}
             </div>
             <div className="grid space-y-5 items-center w-full justify-between gap-3">
               <div className="text-sm leading-snug flex items-center text-white">

@@ -33,9 +33,7 @@ export default function ProductCard({
       <h5 className="truncate text-sm font-medium text-white group-hover:text-vercel-cyan">
         {title}{" "}
       </h5>
-      <div className="flex space-x-1">
-        <HeartsCount hearts={hearts} />
-      </div>
+      <HeartsCount hearts={hearts} />
       <div className="flex items-center justify-between gap-1">
         <div className="text-sm leading-snug flex items-center text-white">
           $ <span className="text-lg font-bold">{price}</span>
